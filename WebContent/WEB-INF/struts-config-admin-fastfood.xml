@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+
+	
+	</form-beans>
+	
+	<action-mappings>
+	
+		<action 
+				path="/fastfood"				
+				type="struts.admin.action.FastFoodAdminAction"
+				parameter="action">
+				<forward name="toFastFoodList" path="/admin/fastfood-list.jsp"/>
+				<forward name="toShowAction" path="/ticket.html?action=toShow"/>
+		</action>
+				
+
+	</action-mappings>
+	<message-resources parameter="struts.action.ApplicationResources" />
+
+</struts-config>

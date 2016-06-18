@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+
+		<form-bean name="moviesAdminForm" type="struts.admin.form.MoviesAdminForm"/>
+	
+	</form-beans>
+	
+	<action-mappings>
+	
+		<action 
+				path="/movie"
+				name="moviesAdminForm"
+				type="struts.admin.action.MoviesAdminAction"
+				parameter="action">
+				<forward name="toMovieList" path="/admin/movie-list.jsp"/>
+				<forward name="toAddMovie" path="/admin/add-movie.jsp"/>
+				<forward name="toEditMovie" path="/admin/edit-movie.jsp"/>
+				<forward name="toInfoMovie" path="/admin/info-movie.jsp"/>
+				<forward name="toInfoMovieAction" path="/movie.html?action=info"/>
+				<forward name="toMovieListAction" path="/movie.html?action=list"/>
+		</action>
+				
+
+	</action-mappings>
+	<message-resources parameter="struts.action.ApplicationResources" />
+
+</struts-config>

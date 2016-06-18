@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+
+		<form-bean name="customerAdminForm" type="struts.admin.form.CustomerAdminForm"/>
+		
+		<form-bean name="staffAdminForm" type="struts.admin.form.StaffAdminForm"/>
+	
+	</form-beans>
+	
+	<action-mappings>
+	
+		<action 
+				path="/customer"
+				name="customerAdminForm"
+				type="struts.admin.action.CustomerAdminAction"
+				parameter="action">
+				<forward name="toCustomerList" path="/admin/customer-list.jsp"/>
+				<forward name="toAddCustomer" path="/admin/add-customer.jsp"/>
+				<forward name="toEditCustomer" path="/admin/edit-customer.jsp"/>
+				<forward name="toShowAction" path="/customer.html?action=toShow"/>
+		</action>
+		
+		
+		<action 
+				path="/staff"
+				name="staffAdminForm"
+				type="struts.admin.action.StaffAdminAction"
+				parameter="action">
+				<forward name="toStaffList" path="/admin/staff-list.jsp"/>
+				<forward name="toAddStaff" path="/admin/add-staff.jsp"/>
+				<forward name="toEditStaff" path="/admin/edit-staff.jsp"/>
+				<forward name="toShowAction" path="/staff.html?action=toShow"/>
+		</action>
+				
+
+	</action-mappings>
+	<message-resources parameter="struts.action.ApplicationResources" />
+
+</struts-config>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+
+	
+	</form-beans>
+	
+	<action-mappings>
+	
+		<action 
+				path="/sale"				
+				type="struts.admin.action.TicketSalesAdminAction"
+				parameter="action">
+				<forward name="toTicketSales" path="/admin/ticket-sales.jsp"/>
+				<forward name="toShowAction" path="/sale.html?action=toShow"/>
+		</action>
+				
+
+	</action-mappings>
+	<message-resources parameter="struts.action.ApplicationResources" />
+
+</struts-config>

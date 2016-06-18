@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+
+		<form-bean name="bookingForm" type="struts.form.BookingForm"/>
+	
+	</form-beans>
+	
+	
+	<action-mappings>
+	
+		<action
+				name="bookingForm"
+				path="/booking"
+				type="struts.action.BookingAction"
+				parameter="action">
+				<forward name="toBookingStep1" path="/pages/booking-step1.jsp"/>
+				<forward name="toBookingStep2" path="/pages/booking-step2.jsp"/>
+				<forward name="toBookingStep3" path="/pages/booking-step3.jsp"/>
+				<forward name="toBookingStep4" path="/pages/booking-step4.jsp"/>
+				<forward name="toSuccess" path="/pages/success.jsp"/>
+				<forward name="toError" path="/pages/error-transaction.jsp"/>
+				<forward name="toCancel" path="/showtimes.html"/>
+		</action>
+		
+
+		
+
+	</action-mappings>
+	<message-resources parameter="struts.action.ApplicationResources" />
+
+</struts-config>

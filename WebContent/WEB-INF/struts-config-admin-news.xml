@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+
+		<form-bean name="newsAdminForm" type="struts.admin.form.NewsAdminForm"/>
+	
+	</form-beans>
+	
+	<action-mappings>
+	
+		<action 
+				path="/news"
+				name="newsAdminForm"
+				type="struts.admin.action.NewsAdminAction"
+				parameter="action">
+				<forward name="toNewsList" path="/admin/news-list.jsp"/>
+				<forward name="toAddNews" path="/admin/add-news.jsp"/>
+				<forward name="toEditNews" path="/admin/edit-news.jsp"/>
+				<forward name="toShowAction" path="/news.html?action=toShow"/>
+		</action>
+				
+
+	</action-mappings>
+	<message-resources parameter="struts.action.ApplicationResources" />
+
+</struts-config>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+
+		<form-bean name="loginAdminForm" type="struts.admin.form.LoginAdminForm"/>
+		
+		<form-bean name="posterAdminForm" type="struts.admin.form.PosterAdminForm"/>
+		
+		<form-bean name="dateAdminForm" type="struts.admin.form.DateAdminForm"/>
+		
+		<form-bean name="changePasswordAdminForm" type="struts.admin.form.ChangePasswordAdminForm" />
+	
+	</form-beans>
+	
+	<global-forwards>
+	
+		<forward name="toAdminCP" path="/admincp.html" />
+		<forward name="toNotValidRole" path="/admin/access.jsp"/>
+		<forward name="toLoginAdmin" path="/admin/login-admin.jsp"/>
+		<forward name="toDashboard" path="/admin/dashboard.jsp"/>
+		
+	
+	</global-forwards>
+	
+	<action-mappings>
+	
+	
+		<!-- cinemas action -->
+		<action
+				path="/cinemas"
+				type="struts.action.CinemasAction">
+				<forward name="toAboutCinemas" path="/pages/cinemas.jsp"/>
+		</action>
+	
+		<!-- action change password admin -->
+		<action 
+				path="/changePasswordAd"
+				name="changePasswordAdminForm"
+				input="/admin/change-password.jsp"
+				type="struts.admin.action.ChangePasswordAdminAction">
+				<forward name="login" path="/admin/login_admin.jsp"></forward>
+				<forward name="success" path="/admin/change-password.jsp"></forward>
+		</action>	
+	
+		<!-- action setting date -->
+		
+		<action
+				path="/date"
+				name="dateAdminForm"
+				type="struts.admin.action.DateAdminAction"
+				parameter="action">
+				<forward name="toDateSetting" path="/admin/date-setting.jsp"/>
+		</action>
+		
+		<!-- action statistic -->
+		
+		<action
+				path="/statistic"
+				type="struts.admin.action.StatisticAdminAction"
+				parameter="action">
+				<forward name="toStatistic" path="/admin/statistic.jsp"/>
+		</action>
+	
+		<!-- action for poster -->
+		<action
+				path="/poster"
+				name="posterAdminForm"
+				type="struts.admin.action.PosterAdminAction"
+				parameter="action">
+				<forward name="toPosterList" path="/admin/poster-list.jsp"/>
+				<forward name="toEditPoster" path="/admin/edit-poster.jsp"/>
+				<forward name="toAddPoster" path="/admin/add-poster.jsp"/>
+				<forward name="toListAction" path="/poster.html?action=list"/>
+		</action>
+		
+		
+		
+	
+		<action 
+				input="/admin/login-admin.jsp"
+				path="/admincp"
+				name="loginAdminForm"
+				type="struts.admin.action.LoginAdminAction">
+				<forward name="toRoomManagement" path="/admin/roomlist.jsp"/>
+		</action>
+				
+		<action
+				path="/logoutadmin"
+				type="struts.admin.action.LogoutAdminAction">
+		</action>	
+		
+
+		
+
+	</action-mappings>
+	<message-resources parameter="struts.action.ApplicationResources" />
+
+</struts-config>

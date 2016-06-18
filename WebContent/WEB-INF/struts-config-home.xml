@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+
+		<form-bean name="loginForm" type="struts.form.LoginForm"/>
+		
+		<form-bean name="registerForm" type="struts.form.RegisterForm"/>
+		
+		<form-bean name="moviesForm" type="struts.form.MoviesForm"/>
+		
+		<form-bean name="movieInfoForm" type="struts.form.MovieInfoForm"/>
+		
+		<form-bean name="showTimesForm" type="struts.form.ShowTimesForm"/>
+		
+		<form-bean name="homeForm" type="struts.form.HomeForm"/>
+		
+		<form-bean name="profileForm" type="struts.form.ProfileForm"/>
+		
+		<form-bean name="changePasswordForm" type="struts.form.ChangePasswordForm"/>
+		
+		<form-bean name="newsForm" type="struts.form.NewsForm"/>
+		
+		
+	</form-beans>
+
+	<global-forwards>
+		<forward name="login" path="/login.html" />
+		<forward name="toHome" path="/home.html"/>
+	</global-forwards>
+
+	<action-mappings>
+	
+	
+		<!-- action order history -->
+		<action
+				path="/orderHistory"
+				type="struts.action.OrderHistoryAction"
+				parameter="action">
+				<forward name="toOrderHistory" path="/pages/order-history.jsp"/>
+		</action>
+	
+		<!-- action news -->
+		<action
+				path="/articles"
+				name="newsForm"
+				type="struts.action.NewsAction"
+				parameter="action">
+				<forward name="toAticlesList" path="/pages/news.jsp"/>
+				<forward name="toArticleInfo" path="/pages/article-info.jsp"/>
+		</action>
+		
+	
+	
+		<!-- action home -->
+		<action
+				path="/home"
+				name="homeForm"
+				type="struts.action.HomeAction">
+				<forward name="toHome" path="/pages/home.jsp"/>
+		</action>
+		
+	
+		<!-- action show list movies -->
+		<action
+				name="moviesForm"
+				path="/movies"
+				type="struts.action.MoviesAction"
+				parameter="action">
+				<forward name="toMovies" path="/pages/movies.jsp"/>
+		</action>
+		
+		<!-- action show times -->
+		<action 
+				path="/showtimes"
+				name="showTimesForm"
+				type="struts.action.ShowTimesAction">
+				<forward name="toShowTimes" path="/pages/show-times.jsp"/>
+		</action>
+		
+		<!-- movie detail -->
+		<action
+				path="/movieinfo"
+				name="movieInfoForm"
+				type="struts.action.MovieInfoAction"
+				parameter="action">
+				<forward name="toMovieInfo" path="/pages/movie-info.jsp"></forward>
+		</action>
+		
+		<!-- login/logout actions -->
+		<action
+				input="/pages/login.jsp"
+				
+				name="loginForm"
+				path="/login"
+				type="struts.action.LoginAction">
+				<forward name="toLogin" path="/pages/login.jsp" redirect="true"/>
+		</action>
+		
+		<!-- logout action -->
+		<action 
+				path="/logout"
+                type="struts.action.LogoutAction"
+                scope="request"
+                validate="false">
+        </action>
+        
+        <!-- register action -->
+		<action
+				path="/register"
+				name="registerForm"
+				type="struts.action.RegisterAction"
+				parameter="action">
+				<forward name="toRegister" path="/pages/register.jsp"/>			
+		</action>
+		
+		
+		<!-- profile action -->
+		<action
+				path="/profile"
+				name="profileForm"
+				type="struts.action.ProfileAction"
+				parameter="action">
+				<forward name="toProfile" path="/pages/profile.jsp"/>
+		</action>
+		
+		<!-- change password action -->
+		<action
+				path="/changePassword"
+				name="changePasswordForm"
+				type="struts.action.ChangePasswordAction"
+				parameter="action">
+				<forward name="toChangePassword" path="/pages/change-password.jsp"/>
+		</action>
+
+	</action-mappings>
+	<message-resources parameter="struts.action.ApplicationResources" />
+
+</struts-config>
